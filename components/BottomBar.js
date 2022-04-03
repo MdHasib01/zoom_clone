@@ -3,6 +3,7 @@ import { SocketContext } from "../context/Context";
 import { BsFillMicFill, BsFillMicMuteFill } from "react-icons/bs";
 import { FaVideoSlash, FaVideo, FaClipboard } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const BottomBar = () => {
   const { setIsVideoOn, isVideoOn, isAudioOn, setIsAudioOn, me, leaveCall } =
@@ -19,6 +20,16 @@ const BottomBar = () => {
       setIsAudioOn(false);
       setIsVideoOn(true);
     } else setIsAudioOn(true);
+  };
+  const handleClipBoard = () => {
+    navigator.clipboard.writeText(me);
+    Swal.fire({
+      position: "middle",
+      icon: "success",
+      title: "copy to clipboard",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
   return (
     <div className="w-full flex justify-center items-center py-4">
@@ -53,7 +64,7 @@ const BottomBar = () => {
         </button>
         <button
           className="bg-[#3c4043] rounded rounded-full p-2 text-xl text-white hover:text-red-500 mr-4"
-          onClick={() => navigator.clipboard.writeText(me)}
+          onClick={handleClipBoard}
         >
           <FaClipboard />
         </button>
