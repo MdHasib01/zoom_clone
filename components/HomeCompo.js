@@ -1,11 +1,9 @@
 import React from "react";
 import { SocketContext } from "../context/Context";
-import { useRouter } from "next/router";
+import Link from "next/link";
 const HomeCompo = () => {
   const { callUser, call, callAccepted, answerCall, myVideo } =
     React.useContext(SocketContext);
-
-  const router = useRouter();
 
   return (
     <div className="container px-10">
@@ -17,11 +15,11 @@ const HomeCompo = () => {
             Now you can call to your friend and have a good time with our free
             meeting service.
           </p>
-          <a href="/meet">
+          <Link to="/meet">
             <button className="px-4 py-2 bg-blue-500 text-white font-bold rounded">
               New Meeting
             </button>
-          </a>
+          </Link>
         </div>
         <div>
           <video
