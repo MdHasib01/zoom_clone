@@ -15,7 +15,7 @@ const HomeCompo = () => {
             Now you can call to your friend and have a good time with our free
             meeting service.
           </p>
-          <Link to="/meet">
+          <Link href="/meet">
             <button className="px-4 py-2 bg-blue-500 text-white font-bold rounded">
               New Meeting
             </button>
