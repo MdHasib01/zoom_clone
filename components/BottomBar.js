@@ -5,7 +5,7 @@ import { FaVideoSlash, FaVideo, FaClipboard } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
 
 const BottomBar = () => {
-  const { setIsVideoOn, isVideoOn, isAudioOn, setIsAudioOn, me } =
+  const { setIsVideoOn, isVideoOn, isAudioOn, setIsAudioOn, me, leaveCall } =
     React.useContext(SocketContext);
   console.log(me);
   const handleVideo = () => {
@@ -57,7 +57,10 @@ const BottomBar = () => {
         >
           <FaClipboard />
         </button>
-        <button className="bg-red-500 rounded rounded-full p-2 text-xl text-white mr-4">
+        <button
+          className="bg-red-500 rounded rounded-full p-2 text-xl text-white mr-4"
+          onClick={leaveCall}
+        >
           <MdCall />
         </button>
       </div>

@@ -1,32 +1,39 @@
 import React from "react";
 import { SocketContext } from "../context/Context";
-
+import { useRouter } from "next/router";
 const HomeCompo = () => {
-  const { callUser, call, callAccepted, answerCall } =
+  const { callUser, call, callAccepted, answerCall, myVideo } =
     React.useContext(SocketContext);
-  const [idCall, setIdCall] = React.useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    callUser(idCall);
-  };
+  const router = useRouter();
+
   return (
-    <div>
-      <button>New Meeting</button>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={idCall}
-          onChange={(e) => setIdCall(e.target.value)}
-        />
-        <button type="submit">Call</button>
-      </form>
-      {call.isReceivingCall && !callAccepted && (
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <h1>{call.name} is calling:</h1>
-          <button onClick={answerCall}>Answer</button>
+    <div className="container px-10">
+      <div className="flex justify-between">
+        <div>
+          <h2 className="text-4xl font-bold">Premium video meetings.</h2>
+          <h2 className="text-4xl font-bold mb-5">Now free for everyone.</h2>
+          <p className="text-gray-500">
+            Now you can call to your friend and have a good time with our free
+            meeting service.
+          </p>
+          <a href="/meet">
+            <button className="px-4 py-2 bg-blue-500 text-white font-bold rounded">
+              New Meeting
+            </button>
+          </a>
         </div>
-      )}
+        <div>
+          <video
+            style={{ transform: "rotateY(180deg)" }}
+            className="rounded rounded-xl w-[400px]"
+            playsInline
+            muted
+            ref={myVideo}
+            autoPlay
+          ></video>
+        </div>
+      </div>
     </div>
   );
 };
