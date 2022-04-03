@@ -12,21 +12,23 @@ const CallForm = () => {
   return (
     <div className="w-full flex justify-center">
       <div>
-        <form onSubmit={handleSubmit}>
-          <input
-            className="border py-1"
-            type="text"
-            value={idCall}
-            placeholder="paste caller id"
-            onChange={(e) => setIdCall(e.target.value)}
-          />
-          <button
-            className="px-7 py-1 bg-blue-500 text-white font-bold"
-            type="submit"
-          >
-            Call
-          </button>
-        </form>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <input
+              className="border py-1"
+              type="text"
+              value={idCall}
+              placeholder="paste caller id"
+              onChange={(e) => setIdCall(e.target.value)}
+            />
+            <button
+              className="px-7 py-1 bg-blue-500 text-white font-bold"
+              type="submit"
+            >
+              Call
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
